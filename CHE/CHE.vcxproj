@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C9020ABB-D21D-45EC-8076-2A907B6D9B55}</ProjectGuid>
+    <RootNamespace>CHE</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)io;$(ProjectDir)code;$(ProjectDir)kernel;E:\Documents\Visual Studio 14\Projects\CHE\CHE\kernel\private;$(ProjectDir)NetWork;$(ProjectDir)NetWork\net_web;$(ProjectDir)NetWork\socket_buffer;$(ProjectDir)NetWork\win_iocp;$(ProjectDir)NetWork\socket;$(ProjectDir)NetWork\socket_packet\test;$(ProjectDir)NetWork\socket_packet;$(ProjectDir)test;$(ProjectDir);$(ProjectDir)thread;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)io;$(ProjectDir)code;$(ProjectDir)kernel;E:\Documents\Visual Studio 14\Projects\CHE\CHE\kernel\private;$(ProjectDir)NetWork;$(ProjectDir)NetWork\net_web;$(ProjectDir)NetWork\socket_buffer;$(ProjectDir)NetWork\win_iocp;$(ProjectDir)NetWork\socket;$(ProjectDir)NetWork\socket_packet\test;$(ProjectDir)NetWork\socket_packet;$(ProjectDir)test;$(ProjectDir);$(ProjectDir)thread;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="code\main.cpp" />
+    <ClCompile Include="io\HByteArray.cpp" />
+    <ClCompile Include="io\HByteConvert.cpp" />
+    <ClCompile Include="io\HighEffectIOBuffer.cpp" />
+    <ClCompile Include="io\HLog.cpp" />
+    <ClCompile Include="io\HSlice.cpp" />
+    <ClCompile Include="io\NetIOBuffer.cpp" />
+    <ClCompile Include="io\private\HSlicePrivate.cpp" />
+    <ClCompile Include="kernel\HDate.cpp" />
+    <ClCompile Include="kernel\HDateTime.cpp" />
+    <ClCompile Include="kernel\hglobal.cpp" />
+    <ClCompile Include="kernel\HObject.cpp" />
+    <ClCompile Include="kernel\HObjectdefs_conn.cpp" />
+    <ClCompile Include="kernel\HObject_conn.cpp" />
+    <ClCompile Include="kernel\htime.cpp" />
+    <ClCompile Include="kernel\HTimer.cpp" />
+    <ClCompile Include="kernel\HTimeC.cpp" />
+    <ClCompile Include="kernel\private\HObjectPrivate.cpp" />
+    <ClCompile Include="kernel\private\HTimerPrivate.cpp" />
+    <ClCompile Include="NetWork\net_web\HHttpRequest.cpp" />
+    <ClCompile Include="NetWork\net_web\HHttpResponse.cpp" />
+    <ClCompile Include="NetWork\net_web\HttpPart.cpp" />
+    <ClCompile Include="NetWork\net_web\NetCrawler.cpp" />
+    <ClCompile Include="NetWork\socket\HAbstractSocket.cpp" />
+    <ClCompile Include="NetWork\socket\HHostAddress.cpp" />
+    <ClCompile Include="NetWork\socket\HNetworkAddressManager.cpp" />
+    <ClCompile Include="NetWork\socket\HNetworkDefender.cpp" />
+    <ClCompile Include="NetWork\socket\HTcpServer.cpp" />
+    <ClCompile Include="NetWork\socket\private\HAbstractSocketPrivate.cpp" />
+    <ClCompile Include="NetWork\socket\private\HNetworkAddressManagerPrivate.cpp" />
+    <ClCompile Include="NetWork\socket\private\HTcpServerPrivate.cpp" />
+    <ClCompile Include="NetWork\socket_buffer\HDataBuffer.cpp" />
+    <ClCompile Include="NetWork\socket_buffer\HDataBufferPartion.cpp" />
+    <ClCompile Include="NetWork\socket_buffer\HDataBufferPartionCollection.cpp" />
+    <ClCompile Include="NetWork\socket_packet\HPacket.cpp" />
+    <ClCompile Include="NetWork\socket_packet\ProtocolType.cpp" />
+    <ClCompile Include="NetWork\socket_packet\test\registerpacket.cpp" />
+    <ClCompile Include="NetWork\TimeVerification.cpp" />
+    <ClCompile Include="NetWork\win_iocp\HIOCP.cpp" />
+    <ClCompile Include="NetWork\win_iocp\IOContext.cpp" />
+    <ClCompile Include="NetWork\win_iocp\SocketContext.cpp" />
+    <ClCompile Include="thread\HThread.cpp" />
+    <ClCompile Include="thread\h_shared_ptr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="io\HByteArray.h" />
+    <ClInclude Include="io\HByteConvert.h" />
+    <ClInclude Include="io\HCodeConversion.hpp" />
+    <ClInclude Include="io\HDebug.hpp" />
+    <ClInclude Include="io\HighEffectIOBuffer.h" />
+    <ClInclude Include="io\HLog.h" />
+    <ClInclude Include="io\HSlice.h" />
+    <ClInclude Include="io\NetIOBuffer.h" />
+    <ClInclude Include="io\private\HSlicePrivate.h" />
+    <ClInclude Include="kernel\HDate.h" />
+    <ClInclude Include="kernel\HDateTime.h" />
+    <ClInclude Include="kernel\hglobal.h" />
+    <ClInclude Include="kernel\HObject.h" />
+    <ClInclude Include="kernel\HObjectdefs_conn.h" />
+    <ClInclude Include="kernel\HObject_conn.h" />
+    <ClInclude Include="kernel\htime.h" />
+    <ClInclude Include="kernel\HTimer.h" />
+    <ClInclude Include="kernel\HTimeC.h" />
+    <ClInclude Include="kernel\private\HObjectPrivate.h" />
+    <ClInclude Include="kernel\private\HTimerPrivate.h" />
+    <ClInclude Include="NetWork\net_web\HHttpRequest.h" />
+    <ClInclude Include="NetWork\net_web\HHttpResponse.h" />
+    <ClInclude Include="NetWork\net_web\HttpPart.h" />
+    <ClInclude Include="NetWork\net_web\NetCrawler.h" />
+    <ClInclude Include="NetWork\socket\HAbstractSocket.h" />
+    <ClInclude Include="NetWork\socket\HHostAddress.h" />
+    <ClInclude Include="NetWork\socket\HNetworkAddressManager.h" />
+    <ClInclude Include="NetWork\socket\HNetworkDefender.h" />
+    <ClInclude Include="NetWork\socket\HTcpServer.h" />
+    <ClInclude Include="NetWork\socket\HTcpSocket.hpp" />
+    <ClInclude Include="NetWork\socket\HUdpSocket.hpp" />
+    <ClInclude Include="NetWork\socket\private\HAbstractSocketPrivate.h" />
+    <ClInclude Include="NetWork\socket\private\HNetworkAddressManagerPrivate.h" />
+    <ClInclude Include="NetWork\socket\private\HTcpServerPrivate.h" />
+    <ClInclude Include="NetWork\socket_buffer\HDataBuffer.h" />
+    <ClInclude Include="NetWork\socket_buffer\HDataBufferdefs.h" />
+    <ClInclude Include="NetWork\socket_buffer\HDataBufferPartion.h" />
+    <ClInclude Include="NetWork\socket_buffer\HDataBufferPartionCollection.h" />
+    <ClInclude Include="NetWork\socket_packet\HPacket.h" />
+    <ClInclude Include="NetWork\socket_packet\ProtocolType.h" />
+    <ClInclude Include="NetWork\socket_packet\test\registerpacket.h" />
+    <ClInclude Include="NetWork\TimeVerification.h" />
+    <ClInclude Include="NetWork\win_iocp\HIOCP.h" />
+    <ClInclude Include="NetWork\win_iocp\HIOCPdefs.h" />
+    <ClInclude Include="NetWork\win_iocp\IOContext.h" />
+    <ClInclude Include="NetWork\win_iocp\SocketContext.h" />
+    <ClInclude Include="thread\HThread.h" />
+    <ClInclude Include="thread\h_shared_ptr.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

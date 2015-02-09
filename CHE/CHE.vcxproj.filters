@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="code">
+      <UniqueIdentifier>{60675528-7461-4903-b4c7-e35384fd1af8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="io">
+      <UniqueIdentifier>{78a3e360-8316-4332-bd90-4933f381571f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kernel">
+      <UniqueIdentifier>{3384efd0-3f85-48e7-8028-e27402f53dc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork">
+      <UniqueIdentifier>{10ad79e4-f098-455c-84d4-0cde9bbadf00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\socket">
+      <UniqueIdentifier>{b1d5abc8-c38d-48f0-b22b-4b08398cdf57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\socket_buffer">
+      <UniqueIdentifier>{0c8641d3-24fc-4583-b79f-d1b0eb41dc10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\socket_packet">
+      <UniqueIdentifier>{e392cdae-dbf5-4a68-94c2-a833ce4ffcf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\socket_packet\test">
+      <UniqueIdentifier>{f2fdad3e-a855-4614-9e5b-ff4310d0cb61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\win_iocp">
+      <UniqueIdentifier>{8bcc35f3-3d90-443a-afd9-b2597b319b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thread">
+      <UniqueIdentifier>{29414ff2-6001-4862-9cb8-d70191d6d3c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\net_web">
+      <UniqueIdentifier>{b95a5ed8-a568-48ee-98c6-d209e571edf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kernel\private">
+      <UniqueIdentifier>{231691f2-da1a-4b15-9256-014f89f9b3a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\socket\private">
+      <UniqueIdentifier>{9689ad25-7003-4e57-80b1-83d1ee9a99c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="io\private">
+      <UniqueIdentifier>{5d99fff8-72b9-4ab1-83bc-8bec70cf0054}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\main.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="io\HByteArray.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="io\HByteConvert.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\hglobal.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HObject.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HObjectdefs_conn.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HObject_conn.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\htime.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HTimer.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\TimeVerification.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket\HAbstractSocket.cpp">
+      <Filter>NetWork\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket\HHostAddress.cpp">
+      <Filter>NetWork\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket_buffer\HDataBuffer.cpp">
+      <Filter>NetWork\socket_buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket_buffer\HDataBufferPartion.cpp">
+      <Filter>NetWork\socket_buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket_buffer\HDataBufferPartionCollection.cpp">
+      <Filter>NetWork\socket_buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket_packet\HPacket.cpp">
+      <Filter>NetWork\socket_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket_packet\ProtocolType.cpp">
+      <Filter>NetWork\socket_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket_packet\test\registerpacket.cpp">
+      <Filter>NetWork\socket_packet\test</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\win_iocp\HIOCP.cpp">
+      <Filter>NetWork\win_iocp</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\win_iocp\IOContext.cpp">
+      <Filter>NetWork\win_iocp</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\win_iocp\SocketContext.cpp">
+      <Filter>NetWork\win_iocp</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\HThread.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\h_shared_ptr.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HDateTime.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HDate.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HTimeC.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="io\HLog.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="io\HighEffectIOBuffer.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="io\NetIOBuffer.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\net_web\NetCrawler.cpp">
+      <Filter>NetWork\net_web</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\net_web\HttpPart.cpp">
+      <Filter>NetWork\net_web</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\net_web\HHttpRequest.cpp">
+      <Filter>NetWork\net_web</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\net_web\HHttpResponse.cpp">
+      <Filter>NetWork\net_web</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket\HTcpServer.cpp">
+      <Filter>NetWork\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\private\HTimerPrivate.cpp">
+      <Filter>kernel\private</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\private\HObjectPrivate.cpp">
+      <Filter>kernel\private</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket\HNetworkAddressManager.cpp">
+      <Filter>NetWork\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket\private\HNetworkAddressManagerPrivate.cpp">
+      <Filter>NetWork\socket\private</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket\HNetworkDefender.cpp">
+      <Filter>NetWork\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket\private\HAbstractSocketPrivate.cpp">
+      <Filter>NetWork\socket\private</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWork\socket\private\HTcpServerPrivate.cpp">
+      <Filter>NetWork\socket\private</Filter>
+    </ClCompile>
+    <ClCompile Include="io\HSlice.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="io\private\HSlicePrivate.cpp">
+      <Filter>io\private</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="io\HByteArray.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\HByteConvert.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\HCodeConversion.hpp">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\HDebug.hpp">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\hglobal.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HObject.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HObjectdefs_conn.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HObject_conn.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\htime.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HTimer.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\TimeVerification.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\HAbstractSocket.h">
+      <Filter>NetWork\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\HHostAddress.h">
+      <Filter>NetWork\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\HTcpSocket.hpp">
+      <Filter>NetWork\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\HUdpSocket.hpp">
+      <Filter>NetWork\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket_buffer\HDataBuffer.h">
+      <Filter>NetWork\socket_buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket_buffer\HDataBufferdefs.h">
+      <Filter>NetWork\socket_buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket_buffer\HDataBufferPartion.h">
+      <Filter>NetWork\socket_buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket_buffer\HDataBufferPartionCollection.h">
+      <Filter>NetWork\socket_buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket_packet\ProtocolType.h">
+      <Filter>NetWork\socket_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket_packet\HPacket.h">
+      <Filter>NetWork\socket_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket_packet\test\registerpacket.h">
+      <Filter>NetWork\socket_packet\test</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\win_iocp\HIOCP.h">
+      <Filter>NetWork\win_iocp</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\win_iocp\HIOCPdefs.h">
+      <Filter>NetWork\win_iocp</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\win_iocp\IOContext.h">
+      <Filter>NetWork\win_iocp</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\win_iocp\SocketContext.h">
+      <Filter>NetWork\win_iocp</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\HThread.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\h_shared_ptr.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HDateTime.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HDate.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HTimeC.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="io\HLog.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\HighEffectIOBuffer.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\NetIOBuffer.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\net_web\NetCrawler.h">
+      <Filter>NetWork\net_web</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\net_web\HttpPart.h">
+      <Filter>NetWork\net_web</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\net_web\HHttpRequest.h">
+      <Filter>NetWork\net_web</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\net_web\HHttpResponse.h">
+      <Filter>NetWork\net_web</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\HTcpServer.h">
+      <Filter>NetWork\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\private\HTimerPrivate.h">
+      <Filter>kernel\private</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\private\HObjectPrivate.h">
+      <Filter>kernel\private</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\HNetworkAddressManager.h">
+      <Filter>NetWork\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\private\HNetworkAddressManagerPrivate.h">
+      <Filter>NetWork\socket\private</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\HNetworkDefender.h">
+      <Filter>NetWork\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\private\HAbstractSocketPrivate.h">
+      <Filter>NetWork\socket\private</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket\private\HTcpServerPrivate.h">
+      <Filter>NetWork\socket\private</Filter>
+    </ClInclude>
+    <ClInclude Include="io\HSlice.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\private\HSlicePrivate.h">
+      <Filter>io\private</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
