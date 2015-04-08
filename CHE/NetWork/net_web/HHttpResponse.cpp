@@ -1,6 +1,6 @@
 #include "HHttpResponse.h"
 #include "HttpPart.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 
 
@@ -14,4 +14,4 @@ HHttpResponse::~HHttpResponse()
 	che_pointer_del(response_string);
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

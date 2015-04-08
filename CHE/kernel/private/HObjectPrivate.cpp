@@ -1,7 +1,7 @@
 #include "HObjectPrivate.h"
 #include "HObject.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HObjectPrivate::HObjectPrivate()
 {
@@ -41,4 +41,4 @@ void HObjectPrivate::try_delete_children()
 	}
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

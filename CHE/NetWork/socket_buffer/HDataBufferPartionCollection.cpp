@@ -2,7 +2,7 @@
 #include "HDataBufferPartionCollection.h"
 
 using std::pair;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HDataBufferPartionCollection::HDataBufferPartionCollection(size_t size)
 	:size(size)
@@ -23,4 +23,4 @@ bool HDataBufferPartionCollection::append(int order, shared_ptr<HDataBufferParti
 
 	return true;
 }
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

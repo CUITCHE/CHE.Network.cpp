@@ -2,7 +2,7 @@
 #include "IOContext.h"
 #include <algorithm>
 #include <cassert>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 SocketContext::SocketContext()
 {
@@ -38,4 +38,4 @@ void SocketContext::removeOneContext(IOContext *pContext)
 	delete pContext;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

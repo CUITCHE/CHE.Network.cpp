@@ -14,7 +14,7 @@
 #include <thread>
 using std::thread;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class HTimer :public HObject
 {
@@ -69,5 +69,5 @@ private:
 	unique_ptr<HTimerPrivate> d_ptr;
 	static thread *work;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HTimer_H__

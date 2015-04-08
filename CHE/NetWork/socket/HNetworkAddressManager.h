@@ -14,7 +14,7 @@
 #include "../NetWork/socket/private/HNetworkAddressManagerPrivate.h"
 #include "htime.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HNetworkAddressManager :public HObject
 {
 	CHE_PRIVATE_DECLARE(HNetworkAddressManager)
@@ -64,5 +64,5 @@ private:
 	unique_ptr<HNetworkAddressManagerPrivate> d_ptr;
 };
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HIpv4Address_H__

@@ -1,7 +1,7 @@
 #include "HHostAddress.h"
 #include "HLog.h"
 #include <algorithm>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HHostAddress::HHostAddress()
 	:null(0)
@@ -161,4 +161,4 @@ list<uint32> HHostAddress::getHostAddressByHostName(const char* pName, SOCK_TYPE
 	return (relist);
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

@@ -13,14 +13,14 @@ purpose:	HDataBuffer的分包类
 #include "HDataBufferdefs.h"
 //#include <boost/pool/pool.hpp>
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class HDataBufferPartion
 {
 public:
 	HDataBufferPartion(const byte* head, const byte* data, size_t secParam_size);
 	~HDataBufferPartion();
-	H_INLINE const byte* containBytes(){ return m_dataPartBegin; }	//返回包数据的起始地址
+	inline const byte* containBytes(){ return m_dataPartBegin; }	//返回包数据的起始地址
 	int64 getGUID();			//返回唯一标识符
 	int16 getType();			//返回协议
 	int32 getPacketTotall();	//返回包总数
@@ -28,5 +28,5 @@ public:
 private:
 	byte *m_dataPartBegin;	//数据起始地址，由boost::pool作内存管理
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HDataBufferPartion_h__

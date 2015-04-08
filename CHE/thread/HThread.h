@@ -13,7 +13,7 @@
 #include <thread>
 using std::thread;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class HThread :public HObject
 {
@@ -33,5 +33,5 @@ private:
 	thread *thread_general = nullptr;		//普通线程
 	static thread *thread_timer;			//用于timer类的函数调用
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HThread_H__

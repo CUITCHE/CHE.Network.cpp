@@ -10,7 +10,7 @@ author:		CHE
 purpose:	时分秒的存储类，提供时间输出输入，暂不提供时间计算
 *********************************************************************/
 #include "hglobal.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 //小时
 typedef uint8 _hour;
 //分钟
@@ -36,5 +36,5 @@ public:
 private:
 	uint32 d_time = 0;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // Time_H__

@@ -11,7 +11,7 @@
 *********************************************************************/
 #include "hglobal.h"
 using std::string;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HttpPart
 {
 	CHE_DISABLE_COPY(HttpPart);
@@ -31,5 +31,5 @@ private:
 	string *header = nullptr;
 	string *body = nullptr;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HttpPart_H__

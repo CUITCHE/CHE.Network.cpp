@@ -12,7 +12,7 @@
 #include "hglobal.h"
 #include "HTimeC.h"
 #include "HDate.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HDateTime
 {
 public:
@@ -48,5 +48,5 @@ private:
 	HDate d_date;
 	HTimeC d_time;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HDateTime_H__

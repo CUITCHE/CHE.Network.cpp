@@ -24,21 +24,21 @@
 #include <cassert>
 
 
-#ifdef NAMESPACE_BEGIN_CHE
-#undef NAMESPACE_BEGIN_CHE
-#define NAMESPACE_BEGIN_CHE namespace che{
+#ifdef CHE_NAMESPACE_BEGIN
+#undef CHE_NAMESPACE_BEGIN
+#define CHE_NAMESPACE_BEGIN namespace che{
 #else
-#define NAMESPACE_BEGIN_CHE namespace che{
-#endif // NAMESPACE_BEGIN_CHE
+#define CHE_NAMESPACE_BEGIN namespace che{
+#endif // CHE_NAMESPACE_BEGIN
 
-#ifdef NAMESPACE_END_CHE
-#undef NAMESPACE_END_CHE
-#define NAMESPACE_END_CHE }
+#ifdef CHE_NAMESPACE_END
+#undef CHE_NAMESPACE_END
+#define CHE_NAMESPACE_END }
 #else
-#define NAMESPACE_END_CHE }
-#endif // NAMESPACE_END_CHE
+#define CHE_NAMESPACE_END }
+#endif // CHE_NAMESPACE_END
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 #ifndef CHE_DISABLE_COPY
 #define CHE_DISABLE_COPY(Class) \
 	Class(const Class&) = delete;\
@@ -151,9 +151,9 @@ typedef unsigned int size_t;
 #define NULL 0
 #endif // !NULL
 
-#ifndef H_INLINE
-#define H_INLINE inline
-#endif // !H_INLINE
+#ifndef inline
+#define inline inline
+#endif // !inline
 
 #ifndef forever
 #define forever for(;;)
@@ -181,11 +181,11 @@ void _Fatal(const char *format, const char *func_name, ...);
 
 typedef std::function<void(MsgType type, const char *s)> MessageHandler_Function;
 extern MessageHandler_Function debug_handler;
-H_INLINE void hInstallMessageHandler(MessageHandler_Function func){ debug_handler = func; }
+inline void hInstallMessageHandler(MessageHandler_Function func){ debug_handler = func; }
 void h_message_output(MsgType type, const char *s);
-H_INLINE void h_message(MsgType type, const char *format, const char *func_name, va_list ap);
+inline void h_message(MsgType type, const char *format, const char *func_name, va_list ap);
 
-H_INLINE void che_noop(void) {}
+inline void che_noop(void) {}
 
 #ifndef __func__
 //打印本宏定义所在函数的名称
@@ -202,10 +202,10 @@ H_INLINE void che_noop(void) {}
 class HDebug;
 class HNoDebug;
 #ifdef _DEBUG
-H_INLINE HDebug hDebug();
-H_INLINE HDebug hWarning();
+inline HDebug hDebug();
+inline HDebug hWarning();
 #else
-H_INLINE HNoDebug hDebug();
+inline HNoDebug hDebug();
 #endif // _DEBUG
 
 // 
@@ -324,5 +324,5 @@ H_INLINE HNoDebug hDebug();
 #endif // _DEBUG
 	class HLog;
 	extern HLog *logger;
-	NAMESPACE_END_CHE
+	CHE_NAMESPACE_END
 #endif	//HGLOBAL_H_

@@ -13,15 +13,15 @@
 				接收到的数据无法返回回来
 *********************************************************************/
 #include "HAbstractSocket.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HUdpSocket : public HAbstractSocket
 {
 public:
 	HUdpSocket(HObject *parent = 0) :HAbstractSocket(che::UdpSocket, parent){}
 	~HUdpSocket(){}
-	H_INLINE size_t writeDatagram(const char *data, size_t dataSize, const HHostAddress &address){ return HAbstractSocket::writeDatagram(data, dataSize, address); }
-	H_INLINE size_t writeDatagram(const string &buffer, const HHostAddress &address){ return HAbstractSocket::writeDatagram(buffer.data(), buffer.size(), address); }
+	inline size_t writeDatagram(const char *data, size_t dataSize, const HHostAddress &address){ return HAbstractSocket::writeDatagram(data, dataSize, address); }
+	inline size_t writeDatagram(const string &buffer, const HHostAddress &address){ return HAbstractSocket::writeDatagram(buffer.data(), buffer.size(), address); }
 
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HUdpSocket_H__

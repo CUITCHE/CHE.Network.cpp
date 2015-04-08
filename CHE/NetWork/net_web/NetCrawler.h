@@ -11,14 +11,14 @@
 				内置各种在爬网页时需要的工具
 *********************************************************************/
 #include "HTcpSocket.hpp"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class NetCrawler final
 {
 public:
 	NetCrawler();
 	~NetCrawler();
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // NetCrawler_H__
 //#include <Windows.h>
 #include <string>

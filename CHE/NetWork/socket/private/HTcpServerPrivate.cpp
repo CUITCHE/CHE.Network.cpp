@@ -1,6 +1,6 @@
 #include "../NetWork/socket/private/HTcpServerPrivate.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 
 HTcpServerPrivate::HTcpServerPrivate()
@@ -8,4 +8,4 @@ HTcpServerPrivate::HTcpServerPrivate()
 {
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

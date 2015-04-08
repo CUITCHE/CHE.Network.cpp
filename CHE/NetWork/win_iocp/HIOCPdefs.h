@@ -12,7 +12,7 @@
 #include "hglobal.h"
 #include <winsock2.h>
 #include <MSWSock.h>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 typedef	enum tagIOCPOperatorType{
 	//投递Accept操作
@@ -41,14 +41,14 @@ typedef	enum tagIOCPOperatorType{
 
 //////////////////
 //句柄安全释放
-H_INLINE void che_handle_del(HANDLE handle){
+inline void che_handle_del(HANDLE handle){
 	if (handle != nullptr && handle != INVALID_HANDLE_VALUE){
 		CloseHandle(handle);
 	}
 }
 //////////////////
 //句柄数组安全释放
-H_INLINE void che_dyadic_handle_del(HANDLE *handle, int num) {
+inline void che_dyadic_handle_del(HANDLE *handle, int num) {
 	if (handle == nullptr)	return;
 
 	for (int i = 0; i < num; ++i) {
@@ -58,8 +58,8 @@ H_INLINE void che_dyadic_handle_del(HANDLE *handle, int num) {
 }
 //////////////////
 //关闭socket
-H_INLINE void closeSocket(SOCKET s) {
+inline void closeSocket(SOCKET s) {
 	s != INVALID_SOCKET ? closesocket(s) : che_noop();
 }
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HIOCPdefs_H__

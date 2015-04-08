@@ -1,5 +1,5 @@
 #include "NetIOBuffer.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 
 NetIOBuffer::~NetIOBuffer()
@@ -22,4 +22,4 @@ char * NetIOBuffer::buf()
 	return buffer;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

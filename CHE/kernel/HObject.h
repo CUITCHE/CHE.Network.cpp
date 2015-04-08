@@ -15,7 +15,7 @@ purpose:	所有类的基类,本类自始至终管理派生出去的所有子类的
 #include <memory>
 using std::unique_ptr;
 using std::string;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 struct HObjectPrivate;
 class HObject
@@ -42,5 +42,5 @@ public:
 private:
 	std::unique_ptr<HObjectPrivate> d_ptr;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HObject_h__

@@ -11,7 +11,7 @@
 	purpose:	Unicode内码转换器。用于utf-8、utf-16（UCS2）、utf-32（UCS4）之间的编码转换
 	*********************************************************************/
 #include "hglobal.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HCodeConversion
 {
 public:
@@ -284,5 +284,5 @@ public:
 		return iNum;
 	}
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HCodeConversion_H__

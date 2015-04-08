@@ -1,6 +1,6 @@
 #include "HTimeC.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 HTimeC::HTimeC(_hour h, _minu m, _seco s)
 {
 	hour(h), minute(m), second(s);
@@ -36,4 +36,4 @@ bool HTimeC::second(_seco s)
 	return s >= 0 && s <= 59 ? d_time |= ((uint32)s), true : false;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

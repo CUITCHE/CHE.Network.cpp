@@ -2,7 +2,7 @@
 #include "hglobal.h"
 #include <stdarg.h>
 #include <ctype.h>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 MessageHandler_Function debug_handler;
 void h_message_output(MsgType type, const char *s)
 {
@@ -105,4 +105,4 @@ extern void h_printf(const char *format)
 	}
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

@@ -1,6 +1,6 @@
 #include "../NetWork/socket/private/HAbstractSocketPrivate.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HAbstractSocketPrivate::operator SOCKET() const
 {
@@ -12,4 +12,4 @@ HAbstractSocketPrivate::HAbstractSocketPrivate(const SOCK_TYPE type)
 {
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

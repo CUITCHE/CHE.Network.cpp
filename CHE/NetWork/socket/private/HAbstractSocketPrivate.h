@@ -1,7 +1,7 @@
 #include "HThread.h"
 #include "HHostAddress.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class HAbstractSocket;
 class HHostAddress;
@@ -21,4 +21,4 @@ CHE_PRIVATE_DEFINED(HAbstractSocket)
 	operator SOCKET()const;
 };
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

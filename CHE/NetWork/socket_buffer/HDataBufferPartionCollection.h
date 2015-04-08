@@ -16,7 +16,7 @@
 using std::map;
 using std::shared_ptr;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HDataBufferPartion;
 
 class HDataBufferPartionCollection
@@ -37,5 +37,5 @@ private:
 	Data_Map_Type data_map;
 	const size_t size;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HDataBufferPartionCollection_H__

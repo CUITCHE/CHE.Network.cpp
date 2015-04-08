@@ -1,6 +1,6 @@
 #include "HDateTime.h"
 #include <ctime>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HDateTime::HDateTime(const HDate date /*= HDate()*/, const HTimeC time /*= HTimeC()*/)
 :d_date(date)
@@ -26,4 +26,4 @@ che::HDateTime HDateTime::currentDateTime()
 	return dateTime;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

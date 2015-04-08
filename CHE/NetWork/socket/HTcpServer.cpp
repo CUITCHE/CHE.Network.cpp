@@ -2,7 +2,7 @@
 #include "HByteConvert.h"
 #include "HNetworkDefender.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 
 void HTcpServer::HTcpServer_impl(Socket_Pending_Function &&func)
@@ -128,4 +128,4 @@ bool HTcpServer::listen_impl()
 	HThread::run(&HTcpServer::cycle_accept_thread, this);
 	return true;
 }
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

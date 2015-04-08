@@ -13,7 +13,7 @@
 #include <list>
 using std::list;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class IOContext;
 class SocketContext
 {
@@ -36,5 +36,5 @@ public:
 	// 也就是说对于每一个客户端Socket，是可以在上面同时投递多个IO请求的
 
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // SOCKET_CONTEXT_H__

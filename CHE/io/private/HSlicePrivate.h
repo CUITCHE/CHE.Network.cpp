@@ -20,7 +20,7 @@ using std::ostream;
 using std::shared_ptr;
 using std::unique_ptr;
 using std::initializer_list;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 #define INDEXPLACEHOLDER INT_MIN
 struct HIndices
 {
@@ -267,5 +267,5 @@ CHE_PRIVATE_DEFINED(HSlice)
 	HSlicePrivate<_PtrType> *q_ptr;		//指向最原始的数据Private
 	
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HSlicePrivate_H__

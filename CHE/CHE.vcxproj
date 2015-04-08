@@ -99,6 +99,7 @@
     <ClCompile Include="NetWork\socket\private\HAbstractSocketPrivate.cpp" />
     <ClCompile Include="NetWork\socket\private\HNetworkAddressManagerPrivate.cpp" />
     <ClCompile Include="NetWork\socket\private\HTcpServerPrivate.cpp" />
+    <ClCompile Include="NetWork\socket_buffer\HData.cpp" />
     <ClCompile Include="NetWork\socket_buffer\HDataBuffer.cpp" />
     <ClCompile Include="NetWork\socket_buffer\HDataBufferPartion.cpp" />
     <ClCompile Include="NetWork\socket_buffer\HDataBufferPartionCollection.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="NetWork\socket\private\HAbstractSocketPrivate.h" />
     <ClInclude Include="NetWork\socket\private\HNetworkAddressManagerPrivate.h" />
     <ClInclude Include="NetWork\socket\private\HTcpServerPrivate.h" />
+    <ClInclude Include="NetWork\socket_buffer\HData.h" />
     <ClInclude Include="NetWork\socket_buffer\HDataBuffer.h" />
     <ClInclude Include="NetWork\socket_buffer\HDataBufferdefs.h" />
     <ClInclude Include="NetWork\socket_buffer\HDataBufferPartion.h" />

@@ -11,7 +11,7 @@
 *********************************************************************/
 #include "hglobal.h"
 using std::string;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HttpPart;
 class HTcpSocket;
 class HHttpRequest
@@ -51,5 +51,5 @@ private:
 	HTcpSocket *tcp_scoket = nullptr;
 	HttpPart *request_string = nullptr;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HHttpRequest_H__

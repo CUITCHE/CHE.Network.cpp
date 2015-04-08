@@ -13,12 +13,12 @@
 				接收到的数据无法返回回来
 *********************************************************************/
 #include "HAbstractSocket.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HTcpSocket : public HAbstractSocket
 {
 public:
 	HTcpSocket(HObject *parent = 0) :HAbstractSocket(che::TcpSocket, parent){}
 	~HTcpSocket(){}
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HTcpSocket_H__

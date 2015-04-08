@@ -1,9 +1,9 @@
 //
 #include "ProtocolType.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 ProtocolType::ProtocolType()
 {
 
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

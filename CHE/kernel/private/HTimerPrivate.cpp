@@ -1,6 +1,6 @@
 #include "../kernel/private/HTimerPrivate.h"
 #include "htime.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 atomic_uint32_t HTimerPrivate::s_timer_id = 0;
 list<HTimer*> HTimerPrivate::all_timer_list;
@@ -50,5 +50,5 @@ bool HTimerPrivate::isValid() const
 	return active && *q_ptr && !flag_delete && in_list;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 

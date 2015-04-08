@@ -1,6 +1,6 @@
 #include "HLog.h"
 #include <stdlib.h>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HLog *logger = nullptr;
 
@@ -137,4 +137,4 @@ void HLog::output()
 	}
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

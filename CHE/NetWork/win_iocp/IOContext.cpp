@@ -1,6 +1,6 @@
 #include "IOContext.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 IOContext::IOContext()
 :m_wsaBuf({ MAX_BUFFER_LEN, m_szBuffer })
@@ -14,4 +14,4 @@ IOContext::~IOContext()
 	closeSocket(m_sockAccept);
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

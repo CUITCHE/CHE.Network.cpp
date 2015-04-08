@@ -11,7 +11,7 @@
 *********************************************************************/
 #include "hglobal.h"
 using std::string;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HttpPart;
 class HHttpResponse
 {
@@ -24,5 +24,5 @@ private:
 	string status;								//状态行
 	HttpPart *response_string = nullptr;		//报头head和正文body
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HHttpResponse_H__

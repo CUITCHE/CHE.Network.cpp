@@ -11,7 +11,7 @@
 *********************************************************************/
 #include "HDateTime.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class Timeverification final
 {
@@ -20,5 +20,5 @@ public:
 	static void addServerURL(const char *url);
 	static HDateTime getTime(int UTC = 8);
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // TimeVerification_H__

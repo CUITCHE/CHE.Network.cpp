@@ -15,7 +15,7 @@
 *********************************************************************/
 #include "../io/private/HSlicePrivate.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 template<typename T>
 class HSlice : public HObject
 {
@@ -102,5 +102,5 @@ private:
 private:
 	shared_ptr<HSlicePrivate<T>> d_ptr;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HSlice_H__

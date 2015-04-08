@@ -1,6 +1,6 @@
 #include "../NetWork/socket/private/HNetworkAddressManagerPrivate.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 int HNetworkAddressManagerPrivate::s_time_limit = 0;
 
 
@@ -21,4 +21,4 @@ HNetworkAddressManagerPrivate::HNetworkAddressManagerPrivate()
 
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

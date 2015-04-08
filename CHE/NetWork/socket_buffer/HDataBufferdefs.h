@@ -10,7 +10,7 @@
 	purpose:	HDataBuffer的相关定义
 *********************************************************************/
 #include "hglobal.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 #define PACKETGUID_BEGIN	0	//唯一标识码起始
 #define PACKETGUID_END		7	//唯一标识码终止
@@ -40,5 +40,5 @@ const int PACKETDATA_BEGIN = DATA_BEGIN;		//这个是针对于完整数据包里面的东西
 const int PACKETFETCHNUMS = EachPacketSize - DATA_BEGIN;		//每次提取的数量
 #endif // VERSION_1_0_2
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HDataBufferdefs_H__

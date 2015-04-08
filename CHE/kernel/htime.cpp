@@ -1,7 +1,7 @@
 #include "htime.h"
 #include "HHostAddress.h"
 #include "HLog.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 vector<string> HTime::server_name{ "203.117.180.36", "131.107.1.10", "202.120.2.101" };
 
@@ -200,4 +200,4 @@ string&& HTime::currentDateTime(char type /*= '_'*/)
 
 	return move_quick(timeString);
 }
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

@@ -1,6 +1,6 @@
 #include "HighEffectIOBuffer.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 
 HighEffectIOBuffer::HighEffectIOBuffer()
@@ -55,4 +55,4 @@ void HighEffectIOBuffer::buffer_unused(NetIOBuffer &&buffer)
 	d_ptr->used->push_back(move_quick(buffer));
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

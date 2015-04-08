@@ -5,7 +5,7 @@
 using std::list;
 using std::function;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class HNetworkAddressManager;
 typedef uint32 Ipv4Address_Type;
@@ -28,4 +28,4 @@ CHE_PRIVATE_DEFINED(HNetworkAddressManager)
 	/*判断回调函数的有效性，有效返回true，否则返回false*/
 	bool isDefriendFunctionCallbackValid() const;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

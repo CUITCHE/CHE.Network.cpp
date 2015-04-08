@@ -16,7 +16,7 @@
 using std::map;
 #pragma comment(lib, "ws2_32.lib")
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class HAbstractSocket : public HThread
 {
@@ -75,5 +75,5 @@ protected:
 private:
 	unique_ptr<HAbstractSocketPrivate> d_ptr;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // socket_H__

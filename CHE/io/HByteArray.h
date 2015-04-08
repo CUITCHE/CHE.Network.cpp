@@ -12,7 +12,7 @@
 #ifndef HByteArray_h__
 #define HByteArray_h__
 #include "HObject.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HByteArray:public HObject
 {
 public:
@@ -28,5 +28,5 @@ private:
 	byte *m_array;		//被托管的byte数组指针
 	size_t m_size;		//被托管的byte数组的大小
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HByteArray_h__

@@ -15,7 +15,7 @@
 #include <list>
 using std::list;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 enum SOCK_TYPE{
 	UdpSocket,
@@ -49,8 +49,8 @@ public:
 	static list<uint32> getHostAddressByHostName(const char* pName, SOCK_TYPE socket_type = TcpSocket);
 public:
 	//结构体为空，返回true
-	H_INLINE bool isNull()const{ return !null; }
-	H_INLINE void clear(){ CheZeroMemory(addr, sizeof(sockaddr_in)); null = false;}
+	inline bool isNull()const{ return !null; }
+	inline void clear(){ CheZeroMemory(addr, sizeof(sockaddr_in)); null = false;}
 
 	void setAddress(uint32 ip4Addr, uint16 port = 0);
 	void setAddress(const char *address, uint16 port = 0);
@@ -59,8 +59,8 @@ public:
 	const char *toString();
 
 	//获得sockaddr指针
-	H_INLINE const sockaddr* sockAddr()const{ return (const sockaddr*)addr; }
-	H_INLINE sockaddr*sockAddr(){ return (sockaddr*)addr; }
+	inline const sockaddr* sockAddr()const{ return (const sockaddr*)addr; }
+	inline sockaddr*sockAddr(){ return (sockaddr*)addr; }
 
 	//设置端口
 	void port(uint16 port);
@@ -74,5 +74,5 @@ private:
 	char *inet_ip_str = nullptr;//4
 	sockaddr_in *addr = nullptr;//16,*4
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HHostAddress_H__

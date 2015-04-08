@@ -12,7 +12,7 @@
 #include "hglobal.h"
 #include "HIOCPdefs.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class NetIOBuffer
 {
@@ -31,5 +31,5 @@ public:
 private:
 	char *buffer;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // NetIOBuffer_H__

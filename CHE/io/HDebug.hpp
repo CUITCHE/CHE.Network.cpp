@@ -29,7 +29,7 @@ using std::multiset;
 using std::multimap;
 using std::stringstream;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HDebug
 {
 	struct Stream{
@@ -39,11 +39,11 @@ class HDebug
 		stringstream ss;
 	}*stream;
 public:
-	H_INLINE HDebug(MsgType t):stream(new Stream(t)){}
+	inline HDebug(MsgType t):stream(new Stream(t)){}
 	HDebug() = delete;
 /*	const HDebug& operator=(const HDebug&) = delete;
 	const HDebug& operator=(const HDebug&&) = delete;*/
-	H_INLINE ~HDebug(){
+	inline ~HDebug(){
 		try{
 			string buf = stream->ss.str();
 			const char *str = buf.c_str();
@@ -51,41 +51,41 @@ public:
 		}catch (...){/*ºöÂÔ´íÎó*/}
 		delete stream;
 	}
-	H_INLINE HDebug& space(){ stream->space = true; stream->ss << " "; return *this; }
-	H_INLINE HDebug& noSpace(){ stream->space = false; return *this; }
-	H_INLINE HDebug& maybeSpace(){ if (stream->space)stream->ss << " "; return *this; }
+	inline HDebug& space(){ stream->space = true; stream->ss << " "; return *this; }
+	inline HDebug& noSpace(){ stream->space = false; return *this; }
+	inline HDebug& maybeSpace(){ if (stream->space)stream->ss << " "; return *this; }
 
-	H_INLINE HDebug& operator<<(const bool t) { stream->ss << (t ? "true" : "false"); return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const char t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const signed short t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const unsigned short t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const signed int t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const unsigned int t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const signed long t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const unsigned long t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const int64 t){stream->ss <<t; return maybeSpace();}
-	H_INLINE HDebug& operator<<(const uint64 t){stream->ss << t; return maybeSpace();}
-	H_INLINE HDebug& operator<<(const float t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const double t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const long double t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const char* t) { stream->ss << t; return maybeSpace(); }
-	H_INLINE HDebug& operator<<(const string &t){ stream->ss << '\"' << t << '\"'; return maybeSpace(); }
-//	H_INLINE HDebug& operator<<(const wstring & t) { stream->ss << '\"' << t << '\"'; return maybeSpace();}
-	H_INLINE HDebug& operator<<(const void * t) { stream->ss << t; return maybeSpace(); }
-//	H_INLINE HDebug& operator<<(const wchar_t *t){ stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const bool t) { stream->ss << (t ? "true" : "false"); return maybeSpace(); }
+	inline HDebug& operator<<(const char t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const signed short t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const unsigned short t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const signed int t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const unsigned int t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const signed long t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const unsigned long t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const int64 t){stream->ss <<t; return maybeSpace();}
+	inline HDebug& operator<<(const uint64 t){stream->ss << t; return maybeSpace();}
+	inline HDebug& operator<<(const float t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const double t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const long double t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const char* t) { stream->ss << t; return maybeSpace(); }
+	inline HDebug& operator<<(const string &t){ stream->ss << '\"' << t << '\"'; return maybeSpace(); }
+//	inline HDebug& operator<<(const wstring & t) { stream->ss << '\"' << t << '\"'; return maybeSpace();}
+	inline HDebug& operator<<(const void * t) { stream->ss << t; return maybeSpace(); }
+//	inline HDebug& operator<<(const wchar_t *t){ stream->ss << t; return maybeSpace(); }
 };
 class HNoDebug
 {
 public:
-	H_INLINE HNoDebug(){}
-	H_INLINE HNoDebug(const HNoDebug&){}
-	H_INLINE ~HNoDebug(){}
-	H_INLINE HNoDebug &space() { return *this; }
-	H_INLINE HNoDebug &nospace() { return *this; }
-	H_INLINE HNoDebug &maybeSpace() { return *this; }
+	inline HNoDebug(){}
+	inline HNoDebug(const HNoDebug&){}
+	inline ~HNoDebug(){}
+	inline HNoDebug &space() { return *this; }
+	inline HNoDebug &nospace() { return *this; }
+	inline HNoDebug &maybeSpace() { return *this; }
 
 	template<typename T>
-	H_INLINE HNoDebug &operator<<(const T &) { return *this; }
+	inline HNoDebug &operator<<(const T &) { return *this; }
 };
 #ifdef _DEBUG
 HDebug hDebug(){ return HDebug(DebugMsg); }
@@ -94,7 +94,7 @@ HDebug hWarning(){ return HDebug(WarningMsg); }
 HNoDebug hDebug(){ return HNoDebug(); }
 #endif // _DEBUG
 template<typename T>
-H_INLINE HDebug& operator<<(HDebug &out, const list<T> &data){
+inline HDebug& operator<<(HDebug &out, const list<T> &data){
 	out.noSpace() << "list(";
 	list<T>::const_iterator iter = data.begin();
 	if (data.size() > 1){
@@ -107,7 +107,7 @@ H_INLINE HDebug& operator<<(HDebug &out, const list<T> &data){
 	return out.space();
 }
 template<typename T>
-H_INLINE HDebug& operator<<(HDebug &out, const vector<T> &data){
+inline HDebug& operator<<(HDebug &out, const vector<T> &data){
 	out.noSpace() << "vector(";
 	vector<T>::const_iterator iter = data.begin();
 	if (data.size() > 1){
@@ -120,7 +120,7 @@ H_INLINE HDebug& operator<<(HDebug &out, const vector<T> &data){
 	return out.space();
 }
 template<typename aKey, typename aT>
-H_INLINE HDebug& operator<<(HDebug &out, const map<aKey, aT> &data){
+inline HDebug& operator<<(HDebug &out, const map<aKey, aT> &data){
 	out.noSpace() << "map{";
 	map<aKey, aT>::const_iterator iter = data.begin();
 	for (; iter != data.end(); ++iter){
@@ -130,7 +130,7 @@ H_INLINE HDebug& operator<<(HDebug &out, const map<aKey, aT> &data){
 	return out.space();
 }
 template<typename T>
-H_INLINE HDebug& operator<<(HDebug &out, const set<T> &data){
+inline HDebug& operator<<(HDebug &out, const set<T> &data){
 	out.noSpace() << "set(";
 	set<T>::const_iterator iter = data.begin();
 	if (data.size() > 1){
@@ -143,7 +143,7 @@ H_INLINE HDebug& operator<<(HDebug &out, const set<T> &data){
 	return out.space();
 }
 template<typename T>
-H_INLINE HDebug& operator<<(HDebug &out, const multiset<T> &data){
+inline HDebug& operator<<(HDebug &out, const multiset<T> &data){
 	out.noSpace() << "multiset(";
 	multiset<T>::const_iterator iter = data.begin();
 	if (data.size() > 1){
@@ -156,7 +156,7 @@ H_INLINE HDebug& operator<<(HDebug &out, const multiset<T> &data){
 	return out.space();
 }
 template<typename aKey, typename aT>
-H_INLINE HDebug& operator<<(HDebug &out, const multimap<aKey, aT> &data){
+inline HDebug& operator<<(HDebug &out, const multimap<aKey, aT> &data){
 	out.noSpace() << "multimap{";
 	multimap<aKey, aT>::const_iterator iter = data.begin();
 	for (; iter != data.end(); ++iter){
@@ -165,5 +165,5 @@ H_INLINE HDebug& operator<<(HDebug &out, const multimap<aKey, aT> &data){
 	out << "}";
 	return out.space();
 }
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HDebug_H__

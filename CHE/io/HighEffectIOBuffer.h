@@ -19,7 +19,7 @@ using std::list;
 using std::mutex;
 using std::unique_ptr;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class NetIOBuffer;
 
@@ -65,5 +65,5 @@ public:
 private:
 	unique_ptr<HighEffectIOBufferData> d_ptr;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HighEffectIOBuffer_H__

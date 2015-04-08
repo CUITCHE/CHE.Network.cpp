@@ -5,7 +5,7 @@
 #include <cassert>
 #include <algorithm>
 #include <atomic>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HIOCP::HIOCP(HHostAddress &&address, uint16 port /*= 0*/) 
 	:d_ptr(new HIOCPdata())
@@ -515,4 +515,4 @@ bool HIOCP::isSocketAlive(SOCKET s)
 	return true;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

@@ -21,7 +21,7 @@ using std::mutex;
 // #include <memory>
 // using std::shared_ptr;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 static map<void*, uint32> ref_count_map;
 static mutex ref_cout_mtx;
@@ -196,5 +196,5 @@ public:
 private:
 	shared_ptr<T> _Ptr;
 };*/
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // h_shared_ptr_H__

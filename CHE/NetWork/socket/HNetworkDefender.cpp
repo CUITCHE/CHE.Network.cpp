@@ -1,6 +1,6 @@
 #include "HNetworkDefender.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 
 HNetworkDefender::HNetworkDefender(HObject *parent /*= 0*/)
@@ -45,4 +45,4 @@ bool HNetworkDefender::Ipv4AddressQuit(Ipv4Address_Type ipAddress, Ipv4Port_Type
 	return true;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

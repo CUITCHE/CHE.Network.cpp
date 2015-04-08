@@ -25,7 +25,7 @@ using std::map;
 using std::list;
 using std::shared_ptr;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HObject;
 class HMetaSlotObject
 {
@@ -41,7 +41,7 @@ public:
 	/*添加槽函数，返回该槽函数反馈给请求添加关联的信号的唯一码
 		返回0表示拒绝关联
 		*/
-	H_INLINE int connect(){
+	inline int connect(){
 		if ((_authorization & 0x80000000) != 0)		return 0;
 		if (_authorization == 0)	{ _authorization = 1; return 1; }
 		int old = _authorization;
@@ -49,7 +49,7 @@ public:
 		return (old & _authorization);
 	}
 
-	H_INLINE void call(HObject *this_, void **arg){
+	inline void call(HObject *this_, void **arg){
 		uint32 This = (uint32)this_;
 		FuncCall slotcall = (FuncCall)_func;
 		//准备伪this指针
@@ -61,12 +61,12 @@ public:
 		slotcall(arg);
 	}
 
-	H_INLINE bool authorization(int uinqueFlag){
+	inline bool authorization(int uinqueFlag){
 		return (pop(uinqueFlag) == 1 && (uinqueFlag & _authorization));
 	}
 
 	template<typename T = uint32, typename Type = ObjectdefsPrivate::RemoveRef<T>::Type>
-	H_INLINE static Type pop(T x){
+	inline static Type pop(T x){
 		uint64 y = x * 0x0002000400080010ull;
 		y &= 0x1111111111111111ull;
 		y *= 0x1111111111111111ull;
@@ -180,5 +180,5 @@ union U_FuncAddr
 	U_FuncAddr<void(Object::*)(void **arg)> f;\
 	f.func = &Object::FuncName;\
 	HMetaObject::active(*this->metaObject, f.addr, arg); }
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HObject_conn_H__

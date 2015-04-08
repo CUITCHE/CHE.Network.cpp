@@ -25,7 +25,7 @@ using namespace std::chrono;
 
 union _LARGE_INTEGER;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class HTime
 {
@@ -54,7 +54,7 @@ public:
 	long double elapsed();
 protected:
 	//设置精度相关参数
-	H_INLINE void setPrecision(OutputPrecision precision);
+	inline void setPrecision(OutputPrecision precision);
 private:
 	_LARGE_INTEGER *tStart, *tEnd;
 	OutputPrecision outputPrecision;
@@ -96,5 +96,5 @@ protected:
 private:
 	static vector<string> server_name;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // htime_H__

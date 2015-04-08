@@ -1,7 +1,7 @@
 #include "HHttpRequest.h"
 #include "HttpPart.h"
 #include "HTcpSocket.hpp"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HHttpRequest::HHttpRequest(const string &resourceURL, const string &hostURL) 
 :request_string(new HttpPart())
@@ -20,4 +20,4 @@ void HHttpRequest::setHttpVersion(const string & version)
 	httpVersion = version;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

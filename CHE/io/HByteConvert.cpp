@@ -4,7 +4,7 @@
 #include <locale.h>
 #include <cassert>
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 DATATYPESET HByteConvert::_convertDataTypeCollection;
 string HByteConvert::ws2s(const wstring &ws)
 {
@@ -523,4 +523,4 @@ void HByteConvert::readVectorString(HDataBuffer &buf, vector<string> &result)
 	}
 }
 */
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

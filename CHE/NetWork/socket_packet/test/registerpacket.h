@@ -10,12 +10,11 @@
 	purpose:	
 *********************************************************************/
 #include "HPacket.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class RegisterPacket :public HPacket
 {
 public:
-	RegisterPacket(void);
-	RegisterPacket(string _name, string pw);
+	RegisterPacket();
 	~RegisterPacket(){}
 
 	getsetter(string&, name, Name)
@@ -29,5 +28,5 @@ private:
 	string password;
 	int levels = -1;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // registerpacket_H__

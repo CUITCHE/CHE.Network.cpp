@@ -10,7 +10,7 @@
 	purpose:	单IO数据结构体定义(用于每一个重叠操作的参数)
 *********************************************************************/
 #include "HIOCPdefs.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class IOContext
 {
 public:
@@ -27,5 +27,5 @@ public:
 	OVERLAPPED	m_Overlapped;					// 每一个重叠网络操作的重叠结构(针对每一个Socket的每一个操作，都要有一个)
 	IOCPOperatorType m_OpType = Null;			// 标识网络操作的类型
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // IO_CONTEXT_H__

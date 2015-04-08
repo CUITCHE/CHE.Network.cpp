@@ -2,7 +2,7 @@
 #include "HObjectPrivate.h"
 #include <algorithm>
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 
 HObject::HObject(HObject *parent /*= NULL*/)
@@ -53,4 +53,4 @@ int HObject::exec()
 	return 0;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

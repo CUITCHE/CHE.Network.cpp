@@ -178,6 +178,9 @@
     <ClCompile Include="io\private\HSlicePrivate.cpp">
       <Filter>io\private</Filter>
     </ClCompile>
+    <ClCompile Include="NetWork\socket_buffer\HData.cpp">
+      <Filter>NetWork\socket_buffer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="io\HByteArray.h">
@@ -323,6 +326,9 @@
     </ClInclude>
     <ClInclude Include="io\private\HSlicePrivate.h">
       <Filter>io\private</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWork\socket_buffer\HData.h">
+      <Filter>NetWork\socket_buffer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

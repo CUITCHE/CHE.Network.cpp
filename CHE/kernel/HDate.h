@@ -14,7 +14,7 @@
 				日：1-31（会受月份影响）
 *********************************************************************/
 #include "hglobal.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 //年
 typedef uint16 _year;
 //月
@@ -54,5 +54,5 @@ public:
 private:
 	uint32 d_date = 0;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HDate_H__

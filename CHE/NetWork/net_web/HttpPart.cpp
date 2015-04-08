@@ -1,5 +1,5 @@
 #include "HttpPart.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HttpPart::~HttpPart()
 {
@@ -34,4 +34,4 @@ bool HttpPart::operator==(const HttpPart & rhs) const
 	return !body->compare(*rhs.body) && !header->compare(*rhs.header);
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

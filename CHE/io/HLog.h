@@ -22,7 +22,7 @@ using std::string;
 using std::fstream;
 using std::unique_ptr;
 using std::stringstream;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 constexpr uint32 LOG_BUFFER_LENGTH = 1024 * 8;
 class HLog final
@@ -191,5 +191,5 @@ private:
 	unique_ptr<Stream> d_ptr;
 	fstream *fp;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HLog_H__

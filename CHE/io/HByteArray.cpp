@@ -1,6 +1,6 @@
 //
 #include "HByteArray.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 HByteArray::HByteArray(byte *array /*= NULL*/, size_t size /*= 0*/)
 	:m_array(array), m_size(size)
 {
@@ -25,4 +25,4 @@ void HByteArray::reset(byte *array, size_t size)
 	m_array = array;
 	m_size = size;
 }
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

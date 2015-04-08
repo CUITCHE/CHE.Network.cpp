@@ -17,7 +17,7 @@
 using std::map;
 using std::pair;
 using std::shared_ptr;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class HNetworkDefender : public HObject
 {
 	CHE_DISABLE_COPY(HNetworkDefender)
@@ -41,5 +41,5 @@ public:
 private:
 	unique_ptr<Ipv4Address_Acount_Map> ipv4Addre_accounts;		//维护所有连入的ip,key=ip,value=ip管理类
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HNetworkDefender_H__

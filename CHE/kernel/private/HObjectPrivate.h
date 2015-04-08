@@ -14,7 +14,7 @@
 #include <mutex>
 using std::list;
 using std::mutex;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 CHE_PRIVATE_DEFINED(HObject)
 {
@@ -36,5 +36,5 @@ CHE_PRIVATE_DEFINED(HObject)
 	//删除所有子对象
 	void try_delete_children();
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HObjectPrivate_H__

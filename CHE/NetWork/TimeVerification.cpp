@@ -1,6 +1,6 @@
 #include "TimeVerification.h"
 #include "htime.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 void Timeverification::addServerURL(const char *url)
 {
@@ -16,4 +16,4 @@ HDateTime Timeverification::getTime(int UTC /*= 8*/)
 	return HTime::getNetUTCTime(UTC);
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

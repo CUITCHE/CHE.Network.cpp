@@ -1,7 +1,7 @@
 #include "HTimer.h"
 #include "htime.h"
 #include <algorithm>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 thread* HTimer::work = nullptr;
 
 HTimer::~HTimer()
@@ -149,4 +149,4 @@ void HTimer::try_delete_invalid_timer()
 	readyToDelete.clear();
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

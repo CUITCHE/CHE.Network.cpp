@@ -1,6 +1,6 @@
 #include "HDate.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HDate::HDate(_year y, _month m, _day d)
 {
@@ -71,4 +71,4 @@ HDate::WeekDay HDate::week()
 	return (WeekDay)w;
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

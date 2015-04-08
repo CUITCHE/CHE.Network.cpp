@@ -2,7 +2,7 @@
 #include "HDataBufferPartion.h"
 #include "HByteConvert.h"
 #include <cassert>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 //boost::pool<> memory32byte(sizeof(byte)*EachPacketSize);
 
@@ -39,4 +39,4 @@ int32 HDataBufferPartion::getPacketTotall()
 	return (int32)(HByteConvert::toType<long long>(m_dataPartBegin + PACKETSERIAL_BEGIN) >> 32);
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

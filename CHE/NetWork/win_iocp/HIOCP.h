@@ -26,7 +26,7 @@ using std::thread;
 using std::unique_ptr;
 using std::shared_ptr;
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class IOContext;
 class SocketContext;
@@ -139,5 +139,5 @@ private:
 	unique_ptr<HIOCPdata> d_ptr;
 	unique_ptr<HighEffectIOBuffer> shared_buffer_block;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HIOCP_H__

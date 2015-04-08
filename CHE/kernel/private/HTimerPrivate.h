@@ -17,7 +17,7 @@
 using std::mutex;
 using std::list;
 using std::atomic_uint32_t;
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 //////////////////////////////////////////////////////////////////////////
 //
 //define timer function
@@ -62,5 +62,5 @@ CHE_PRIVATE_DEFINED(HTimer)
 	//根据active、q_ptr、flag_delete、in_list的值来判断
 	bool isValid()const;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HTimerPrivate_H__

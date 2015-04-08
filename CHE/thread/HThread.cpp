@@ -1,5 +1,5 @@
 #include "HThread.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 thread* HThread::thread_timer = nullptr;
 HThread::HThread(HObject *parent /*= 0*/)
 :HObject(parent)
@@ -21,4 +21,4 @@ void HThread::tryStop()
 	che_pointer_before_del(thread_general, &thread::join);
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

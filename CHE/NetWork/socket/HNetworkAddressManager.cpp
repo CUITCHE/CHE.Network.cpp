@@ -1,6 +1,6 @@
 #include "HNetworkAddressManager.h"
 
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 HNetworkAddressManager::HNetworkAddressManager(HObject *parent /*= 0*/)
 :HObject(parent)
@@ -100,4 +100,4 @@ void HNetworkAddressManager::setDefriendFuncCallback(Defriend_Function &&func)
 	_memory_dynamic_crt(d->defriend_func, move_quick(func));
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

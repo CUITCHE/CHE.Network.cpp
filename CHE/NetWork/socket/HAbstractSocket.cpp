@@ -1,6 +1,6 @@
 #include "HAbstractSocket.h"
 #include <string>
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 /*
 #pragma region ERROR_STRING
 const std::map<int, const char *> inet_error_string = {
@@ -347,4 +347,4 @@ void HAbstractSocket::readyToReadByServerExecuted()
 	HThread::run(&HAbstractSocket::cycle_read_tcp, this);
 }
 
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END

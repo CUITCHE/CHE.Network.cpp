@@ -13,7 +13,7 @@
 	*********************************************************************/
 #include "../NetWork/socket/private/HTcpServerPrivate.h"
 #include "HTcpSocket.hpp"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 
 class HTcpServer : public HThread
 {
@@ -56,5 +56,5 @@ protected:
 private:
 	unique_ptr<HTcpServerPrivate> d_ptr;
 };
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // HTcpServer_H__

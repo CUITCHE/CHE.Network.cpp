@@ -18,7 +18,7 @@
 	purpose:	协议类型
 *********************************************************************/
 #include "hglobal.h"
-NAMESPACE_BEGIN_CHE
+CHE_NAMESPACE_BEGIN
 class ProtocolType
 {
 public:
@@ -59,5 +59,5 @@ public:
 	};
 };
 typedef ProtocolType HType;//协议类型
-NAMESPACE_END_CHE
+CHE_NAMESPACE_END
 #endif // ProtocolType_h__
