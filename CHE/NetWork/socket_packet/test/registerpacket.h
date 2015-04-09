@@ -17,16 +17,17 @@ public:
 	RegisterPacket();
 	~RegisterPacket(){}
 
-	getsetter(string&, name, Name)
-	getsetter(string&, password, Password)
-	getsetter(int, levels, Levels)
+	GETSETTER(string, name, Name);
+	GETSETTER(string, password, Password);
+	GETSETTER(int, levels, Levels);
+	GETSETTER(short, _short, _short);
+	GETSETTER(byte, _byte, _byte);
+	GETSETTER(long long, ___int64, ___int64);
+	GETSETTER(double, _double, _double);
+	GETSETTER(float, _float, _float);
 protected:
 	void write();
 	void read();
-private:
-	string name;
-	string password;
-	int levels = -1;
 };
 CHE_NAMESPACE_END
 #endif // registerpacket_H__

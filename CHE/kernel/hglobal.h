@@ -73,14 +73,19 @@ inline const Class##Private* d_func()const { return d_ptr.get(); }\
 //不可删除，用于指针副本，框架自行处理
 #define __not_delete
 //get 方法宏 assume type of num is int, getter(num, Num) will generate function - const int& getNum()const{return this->num;}
-#define getter(Type, _variable_, _name_) inline const Type get##_name_()const{return _variable_;}\
+#define getter(_Type_, _variable_, _name_) inline const _Type_& get##_name_()const{return _variable_;}
 
 //set 方法宏 assume type of num is int, setter(num, Num) will generate function - int setNum(int& val){this->num = val;}
-#define setter(Type, _variable_, _name_) inline void set##_name_(const Type val){this->_variable_ = val;}\
+#define setter(_Type_, _variable_, _name_) inline void set##_name_(const _Type_& val){this->_variable_ = val;}
 
 //get-set 方法宏，Type的类型不要加const，可以加& or &&
-#define getsetter(Type, _variable_, _name_) getter(Type, _variable_, _name_) \
-	setter(Type, _variable_, _name_) \
+#define getsetter(_Type_, _variable_, _name_) getter(_Type_, _variable_, _name_) \
+	setter(_Type_, _variable_, _name_) \
+
+//GETSETTER 大宏
+#define GETSETTER(_Type_, _variable_, _name_) \
+	private: _Type_ _variable_;\
+	public:getsetter(_Type_, _variable_, _name_)\
 
 typedef signed char int8, *Pint8;
 typedef signed short int16, *PINT16;

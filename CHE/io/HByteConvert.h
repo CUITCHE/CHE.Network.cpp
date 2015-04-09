@@ -27,27 +27,27 @@ CHE_NAMESPACE_BEGIN
 #ifndef DATATYPESET
 typedef union _DATATYPESET{
 	_DATATYPESET() :_int64_(0){}
-	_DATATYPESET(const bool rVal) :_int64_(0){ _bool = rVal; }
-	_DATATYPESET(const byte rVal) :_byte({ { rVal, 0, 0, 0, 0, 0, 0, 0 } }){}
-	_DATATYPESET(const char rVal) :_byte({ { (const byte)rVal, 0, 0, 0, 0, 0, 0, 0 } }){}
-	_DATATYPESET(const short rVal) :_short({ rVal, 0, 0, 0 }){}
-	_DATATYPESET(const int rVal) :_int_({ rVal, 0 }){}
-	_DATATYPESET(const float rVal) :_float({ rVal, 0 }){}
+	_DATATYPESET(const bool rVal) :_int64_(rVal){ }
+	_DATATYPESET(const byte rVal) :_int64_(rVal){}
+	_DATATYPESET(const char rVal) :_int64_(rVal){}
+	_DATATYPESET(const short rVal) :_int64_(rVal){}
+	_DATATYPESET(const int rVal) :_int64_(rVal){}
+	_DATATYPESET(const float rVal) :_double(rVal){}
 	_DATATYPESET(const double &rVal) :_double(rVal){}
 	_DATATYPESET(const long long &rVal) :_int64_(rVal){}
 
-	inline void operator=(const bool rVal){ _bool = rVal; }
-	inline void operator=(const byte rVal){ _byte = rVal; }
-	inline void operator=(const short rVal){ _short = rVal; }
-	inline void operator=(const int rVal){ _int_ = rVal; }
-	inline void operator=(const float rVal){ _float = rVal; }
+	inline void operator=(const bool rVal){ _int64_ = rVal; }
+	inline void operator=(const byte rVal){ _int64_ = rVal; }
+	inline void operator=(const short rVal){ _int64_ = rVal; }
+	inline void operator=(const int rVal){ _int64_ = rVal; }
+	inline void operator=(const float rVal){ _float._1st = rVal; }
 	inline void operator=(const double &rVal){ _double = rVal; }
 	inline void operator=(const long long &rVal){ _int64_ = rVal; }
 
 	inline operator bool()const{ return _bool; }
 	inline operator byte*()const{ return _byte; }
 	inline operator byte()const{ return _byte._1st[0]; }
-	inline operator uint16()const{ return (uint16)_short._1st; }
+	inline operator uint16()const{ return (uint16)_short; }
 	inline operator short()const{ return _short; }
 	inline operator uint32()const{ return (uint32)_int_; }
 	inline operator int()const{ return _int_; }
@@ -60,8 +60,8 @@ typedef union _DATATYPESET{
 		mutable byte _1st[8];
 		inline void operator=(const byte rVal){ _1st[0] = rVal; }
 		inline void operator=(const char rVal){ _1st[0] = (byte)rVal; }
-		inline operator byte*()const{ return _1st; }
-		inline operator char*()const{ return (char*)_1st; }
+		inline operator byte*()const{ return &_1st[0]; }
+		inline operator char*()const { return (char*)&_1st[0]; }
 	}_byte;
 	struct _2{
 		short _1st;
@@ -84,9 +84,9 @@ typedef union _DATATYPESET{
 		inline operator float()const{ return _1st; }
 	}_float;
 	struct _5{
-		bool _1st[64];
+		bool _1st[8];
 		inline void operator=(const bool rVal){ _1st[0] = rVal; }
-		inline operator bool()const{ return _1st[0]; }
+		inline operator bool()const { return _1st[0];}
 	}_bool;
 	long long _int64_;
 	double _double;
@@ -133,12 +133,13 @@ public:
 	template<typename T>
 	inline static const byte* toBytes(const T &value){
 		_convertDataTypeCollection = value;
-		return _convertDataTypeCollection;
+		return (byte *)_convertDataTypeCollection + sizeof(long long) % sizeof(T);
 	}
 	template<typename T>
 	inline static T toType(const byte *pBuf){
 		memcpy<T>(_convertDataTypeCollection, pBuf);
-		return _convertDataTypeCollection;
+		auto p = &_convertDataTypeCollection;
+		return (T)_convertDataTypeCollection;
 	}
 protected:
 #pragma region 字节化POD 数据
@@ -179,28 +180,30 @@ protected:
 #pragma region wstring 特化
 	template<>
 	inline static void write_t<wstring>(HDataBuffer &buf, const wstring &data) {
+//#error do not use wstring to transport data
 		wchar_t *buffer = const_cast<wchar_t*>(data.c_str());
-		int len = data.length();
-		byte *pB = new byte[len + 1];
-		CheZeroMemory(pB, data.size());
+		byte *pB = nullptr;
 		int nlen = HCodeConversion::UTF16Str_To_UTF8Str((WORD *)buffer, pB);
 		//写入长度
 		write_t(buf, nlen);
 		//写入数据
 		buf.putBytes(pB, nlen);
-		delete[]pB;
 	}
 	template<>
 	inline static void read_t<wstring>(const HDataBuffer &buf, wstring &data) {
+//#error do not use wstring to transport data
 		//读取长度
-		int len = read_t<int>(buf) + 1;
-		byte *dst = new byte[len];
-		wchar_t *pChar = new wchar_t[len];
-		CheZeroMemory(pChar, len*sizeof(wchar_t));
-		HCodeConversion::UTF8Str_To_UTF16Str(dst, (WORD*)pChar);
-		data = pChar;
-		delete[]pChar;
-		delete[]dst;
+		int nlen = read_t<int>(buf);
+		const byte *dst = buf.fetchBytes(nlen+1);
+		byte save = dst[nlen];
+		const_cast<byte *>(dst)[nlen] = 0;
+
+		WORD *pChar = nullptr;
+		int len = HCodeConversion::UTF8Str_To_UTF16Str(dst, pChar);
+
+		const_cast<byte *>(dst)[nlen] = save;
+		buf.addReadPosition(-1);
+		data.insert(0, (wchar_t *)pChar, len);
 	}
 #pragma endregion
 
@@ -228,7 +231,7 @@ protected:
 #pragma endregion
 protected:
 	template<typename T>
-	inline static void memcpy(void *_dst, const void *_src){ T *dst = (T *)_dst; T *src = (T *)_src; *dst++ = *src++; }
+	inline static void memcpy(void *_dst, const void *_src){ T *dst = (T *)_dst; T *src = (T *)_src; *dst = *src; }
 private:
 	static DATATYPESET _convertDataTypeCollection;			//数据类型集
 };

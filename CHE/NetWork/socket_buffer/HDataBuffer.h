@@ -22,14 +22,13 @@
 #include "hglobal.h"
 #include <vector>
 using std::vector;
-
+extern const int __length__;
 CHE_NAMESPACE_BEGIN
 
 class HDataBuffer
 {
 public:
-	//传入协议头的长度，协议或者其它数据不归本类管辖
-	HDataBuffer(uint32 writePosition);
+	HDataBuffer();
 	~HDataBuffer();
 	HDataBuffer(HDataBuffer &rhs);
 	HDataBuffer(HDataBuffer &&rhs);
@@ -37,7 +36,7 @@ public:
 	void operator=(HDataBuffer &&rhs);
 
 	inline uint32 getDataLength() const { return m_data.size(); }	//获得数据的长度【整个长度】
-	inline byte* getData(){return &m_data[0];}
+	inline const byte* data()const{return &m_data[0];}
 
 	//向m_nowDataBuf里写数据，并移动m_Wpos指针
 	void putBytes(const byte *data, UINT len);
@@ -46,10 +45,13 @@ public:
 	const byte* fetchBytes(uint32 len)const;
 
 	//清除数据，只是把读写指针复位
-	inline void clear() { m_Rpos = m_Wpos = packetBeginPosition - 1; }
+	inline void clear() { m_Rpos = m_Wpos = __length__; }
 
+	//设定写指针的位置
+	inline void setWritePosition(const int pos) { m_Wpos = pos; }
+	inline void addReadPosition(const int pos) const{ m_Rpos += pos; }
+	friend void setDataLength(HDataBuffer &rhs, const int length);
 private:
-	uint32 packetBeginPosition;	//写入发送数据的起始位置，可能前面的位置需要腾出空间写入长度，协议等信息
 	uint32 m_Wpos;				//写指针
 	mutable uint32 m_Rpos;		//读指针
 	vector<byte> m_data;

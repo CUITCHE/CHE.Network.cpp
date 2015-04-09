@@ -15,8 +15,10 @@
 	author:		Jq
 	
 	purpose:	定义 包 的虚基类，
-	** 包长(4byte)+时间戳(8byte)+data(N byte)+校验码(32byte)
+	** 包长(4byte)+校验码(32byte)+时间戳(8byte)+data(N byte)
 	** 这里的包长，指的是除包长之外的长度。
+	   这里仅仅包含要发送的数据data，其它需要额外添加的数据由“数据发送类”
+	   控制
 *********************************************************************/
 #include "ProtocolType.h"
 #include "HByteConvert.h"
@@ -42,23 +44,21 @@ public:
 	inline void setData(const HDataBuffer &d);
 	inline const HDataBuffer& getData()const;
 
-	inline char* getCharData();
+	inline const char* toLatin()const;
 
 	getsetter(int16, type, Type)
-	long long getSendTime()const;
+
 protected:
 	virtual void write(){}
 	virtual void read(){}
 
-	//写入data模版函数
-	template<typename T>
-	void write_to_data(const T &d){
-		HByteConvert::write(*data, d);
-	}
-	template<typename T, typename... Args>
-	void write_to_data(const T &d, const Args &...args){
-		HByteConvert::write(*data, d);
-		write_to_data(args...);
+	template<typename... Args>
+	void write_to_data(const Args &...args){
+		//计算包长度
+		int count = 0;
+		__data__length(count, args...);
+		setDataLength(*data, count);
+		write_to_data_impl(args...);
 	}
 
 	//从data读入模版函数
@@ -71,16 +71,39 @@ protected:
 		HByteConvert::read(d, *data);
 		read_from_data(args...);
 	}
+	
 protected:
 	int16 type;
 	HDataBuffer *data = nullptr;
 private:
-	void writeHeader();
-	void readHeader();
-	void setSendTime();
+	//从传来的参数计算包的实际长度
+	template<typename T>
+	void __data__length(int &count, const T &d) {
+		count += sizeof(T);
+	}
+	template<typename T, typename... Args>
+	void __data__length(int &count, const T &d, const Args &...args) {
+		
+		__data__length(count, d);
+		__data__length(count, args...);
+	}
+	template<>
+	void __data__length<string>(int &count, const string &d) {
+		count += (sizeof(int) + d.size()*sizeof(char));
 
-	//在包的尾部添加自制md5字符串32位
-	void setTail();
+	}
+
+	//写入data模版函数
+	template<typename T>
+	void write_to_data_impl(const T &d) {
+		HByteConvert::write(*data, d);
+	}
+	//写入data模版函数
+	template<typename T, typename... Args>
+	void write_to_data_impl(const T &d, const Args &...args) {
+		HByteConvert::write(*data, d);
+		write_to_data_impl(args...);
+	}
 };
 CHE_NAMESPACE_END
 #endif // HPacket_h__

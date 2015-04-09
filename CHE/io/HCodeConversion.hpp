@@ -11,7 +11,11 @@
 	purpose:	Unicode内码转换器。用于utf-8、utf-16（UCS2）、utf-32（UCS4）之间的编码转换
 	*********************************************************************/
 #include "hglobal.h"
+#include <mutex>
+using std::mutex;
 CHE_NAMESPACE_BEGIN
+static mutex mtx_utf16_utf8;
+static mutex mtx_utf8_ut16;
 class HCodeConversion
 {
 public:
@@ -27,7 +31,7 @@ public:
 	// Parameter: DWORD dwUCS4	带转换ucs4编码
 	// Parameter: byte * pbUTF8	存储utf8编码，若为NULL，可获取长度信息(字节数)
 	//************************************
-	static int UCS4_To_UTF8(DWORD dwUCS4, byte *pbUTF8){
+	static int UCS4_To_UTF8(DWORD dwUCS4, byte *pbUTF8) {
 		static const byte	abPrefix[] = { 0, 0xC0, 0xE0, 0xF0, 0xF8, 0xFC };
 		static const DWORD adwCodeUp[] = {
 			0x80,			// U+00000000 ～ U+0000007F
@@ -42,8 +46,8 @@ public:
 
 		// 根据UCS4编码范围确定对应的UTF-8编码字节数
 		iLen = sizeof(adwCodeUp) / sizeof(DWORD);
-		for (i = 0; i < iLen; i++){
-			if (dwUCS4 < adwCodeUp[i]){
+		for (i = 0; i < iLen; i++) {
+			if (dwUCS4 < adwCodeUp[i]) {
 				break;
 			}
 		}
@@ -51,8 +55,8 @@ public:
 		if (i == iLen)return 0;	// 无效的UCS4编码
 
 		iLen = i + 1;	// UTF-8编码字节数
-		if (pbUTF8 != NULL){	// 转换为UTF-8编码
-			for (; i > 0; i--){
+		if (pbUTF8 != NULL) {	// 转换为UTF-8编码
+			for (; i > 0; i--) {
 				pbUTF8[i] = static_cast<byte>((dwUCS4 & 0x3F) | 0x80);
 				dwUCS4 >>= 6;
 			}
@@ -72,58 +76,58 @@ public:
 	// Parameter: const byte * pbUTF8	要转换的UTF8编码
 	// Parameter: DWORD & dwUCS4		存储转换后的UCS4编码
 	//************************************
-	static int UTF8_To_UCS4(const byte* pbUTF8, DWORD& dwUCS4){
+	static int UTF8_To_UCS4(const byte* pbUTF8, DWORD& dwUCS4) {
 		int		i, iLen;
 		byte	b;
 
-		if (pbUTF8 == NULL){	// 参数错误
+		if (pbUTF8 == NULL) {	// 参数错误
 			return 0;
 		}
 
 		b = *pbUTF8++;
-		if (b < 0x80){
+		if (b < 0x80) {
 			dwUCS4 = b;
 			return 1;
 		}
 
-		if (b < 0xC0 || b > 0xFD){	// 非法UTF8
+		if (b < 0xC0 || b > 0xFD) {	// 非法UTF8
 			return 0;
 		}
 
-		if (b < 0xE0){
+		if (b < 0xE0) {
 			dwUCS4 = b & 0x1F;
 			iLen = 2;
 		}
-		else if (b < 0xF0){
+		else if (b < 0xF0) {
 			dwUCS4 = b & 0x0F;
 			iLen = 3;
 		}
-		else if (b < 0xF8){
+		else if (b < 0xF8) {
 			dwUCS4 = b & 7;
 			iLen = 4;
 		}
-		else if (b < 0xFC){
+		else if (b < 0xFC) {
 			dwUCS4 = b & 3;
 			iLen = 5;
 		}
-		else{
+		else {
 			dwUCS4 = b & 1;
 			iLen = 6;
 		}
 
-		for (i = 1; i < iLen; i++){
+		for (i = 1; i < iLen; i++) {
 			b = *pbUTF8++;
-			if (b < 0x80 || b > 0xBF){	// 非法UTF8
+			if (b < 0x80 || b > 0xBF) {	// 非法UTF8
 				break;
 			}
 
 			dwUCS4 = (dwUCS4 << 6) + (b & 0x3F);
 		}
 
-		if (i < iLen){	// 非法UTF8
+		if (i < iLen) {	// 非法UTF8
 			return 0;
 		}
-		else{
+		else {
 			return iLen;
 		}
 	}
@@ -137,23 +141,23 @@ public:
 	// Parameter: DWORD dwUCS4		要转换的UCS4编码
 	// Parameter: WORD * pwUTF16	用于存储转换后的UTF16编码。设为NULL，可以获取长度信息（字符数）
 	//************************************
-	static int UCS4_To_UTF16(DWORD dwUCS4, WORD* pwUTF16){
-		if (dwUCS4 <= 0xFFFF){
-			if (pwUTF16 != NULL){
+	static int UCS4_To_UTF16(DWORD dwUCS4, WORD* pwUTF16) {
+		if (dwUCS4 <= 0xFFFF) {
+			if (pwUTF16 != NULL) {
 				*pwUTF16 = static_cast<WORD>(dwUCS4);
 			}
 
 			return 1;
 		}
-		else if (dwUCS4 <= 0xEFFFF){
-			if (pwUTF16 != NULL){
+		else if (dwUCS4 <= 0xEFFFF) {
+			if (pwUTF16 != NULL) {
 				pwUTF16[0] = static_cast<WORD>(0xD800 + (dwUCS4 >> 10) - 0x40);	// 高10位
 				pwUTF16[1] = static_cast<WORD>(0xDC00 + (dwUCS4 & 0x03FF));		// 低10位
 			}
 
 			return 2;
 		}
-		else{
+		else {
 			return 0;
 		}
 	}
@@ -167,18 +171,18 @@ public:
 	// Parameter: const WORD * pwUTF16 需要转换的UTF16编码
 	// Parameter: DWORD & dwUCS4 存储转换后的UCS4编码
 	//************************************
-	static int UTF16_To_UCS4(const WORD* pwUTF16, DWORD& dwUCS4){
+	static int UTF16_To_UCS4(const WORD* pwUTF16, DWORD& dwUCS4) {
 		WORD	w1, w2;
 
-		if (pwUTF16 == NULL){	// 参数错误
+		if (pwUTF16 == NULL) {	// 参数错误
 			return 0;
 		}
 
 		w1 = pwUTF16[0];
-		if (w1 >= 0xD800 && w1 <= 0xDFFF){	// 编码在替代区域（Surrogate Area）
-			if (w1 < 0xDC00){
+		if (w1 >= 0xD800 && w1 <= 0xDFFF) {	// 编码在替代区域（Surrogate Area）
+			if (w1 < 0xDC00) {
 				w2 = pwUTF16[1];
-				if (w2 >= 0xDC00 && w2 <= 0xDFFF){
+				if (w2 >= 0xDC00 && w2 <= 0xDFFF) {
 					dwUCS4 = (w2 & 0x03FF) + (((w1 & 0x03FF) + 0x40) << 10);
 					return 2;
 				}
@@ -186,7 +190,7 @@ public:
 
 			return 0;	// 非法UTF16编码	
 		}
-		else{
+		else {
 			dwUCS4 = w1;
 			return 1;
 		}
@@ -201,40 +205,55 @@ public:
 	// Parameter: const byte * pbszUTF8Str 需要转换的UTF8字符串
 	// Parameter: WORD * pwszUTF16Str 存储转换后的UTF16字符串。设为NULL，可以获取所需长度信息（字符数）
 	//************************************
-	static int UTF8Str_To_UTF16Str(const byte* pbszUTF8Str, WORD* pwszUTF16Str){
+	static int UTF8Str_To_UTF16Str(const byte* pbszUTF8Str, WORD* &pwszUTF16Str) {
+		// 参数错误
+		if (pbszUTF8Str == NULL) {
+			return 0;
+		}
 		int		iNum, iLen;
 		DWORD	dwUCS4;
 
-		if (pbszUTF8Str == NULL){	// 参数错误
-			return 0;
-		}
-
-		iNum = 0;	// 统计有效字符个数
-		while (*pbszUTF8Str){	// UTF8编码转换为UCS4编码
+		const int __increment__ = 1024 * 4;
+		static int __length__ = __increment__;
+		static WORD *__memory__ = new WORD[__length__];
+		static WORD *__memory__end = __memory__ + __length__;
+		WORD *putf16 = __memory__;
+		iNum = 0;
+		__locker(mtx_utf16_utf8);
+		// UTF8编码转换为UCS4编码
+		while (*pbszUTF8Str) {
 			iLen = UTF8_To_UCS4(pbszUTF8Str, dwUCS4);
-			if (iLen == 0){	// 非法的UTF8编码
+			// 非法的UTF8编码
+			if (iLen == 0) {
 				return 0;
 			}
 
 			pbszUTF8Str += iLen;
 
 			// UCS4编码转换为UTF16编码
-			iLen = UCS4_To_UTF16(dwUCS4, pwszUTF16Str);
-			if (iLen == 0){
+			iLen = UCS4_To_UTF16(dwUCS4, putf16);
+			if (iLen == 0) {
 				return 0;
 			}
 
-			if (pwszUTF16Str != NULL){
-				pwszUTF16Str += iLen;
+			/*if (putf16 != NULL) {
+				putf16 += iLen;
+			}*/
+			if (putf16 + iLen > __memory__end) {
+				__memory__ = (WORD *)realloc(__memory__, sizeof(WORD)*(__length__ + __increment__));
+				assert(__memory__);
+				__length__ += __increment__;
+				__memory__end = __memory__ + __length__;
 			}
-
+			putf16 += iLen;
 			iNum += iLen;
 		}
 
-		if (pwszUTF16Str != NULL){
-			*pwszUTF16Str = 0;	// 写入字符串结束标记
-		}
-
+		/*if (putf16 != NULL) {
+			// 写入字符串结束标记
+			*putf16 = 0;
+		}*/
+		pwszUTF16Str = __memory__;
 		return iNum;
 	}
 
@@ -247,40 +266,54 @@ public:
 	// Parameter: const WORD * pwszUTF16Str	需要转换的UTF16字符串
 	// Parameter: byte * pbszUTF8Str		存储转换后的UTF8字符串。设为NULL，可以获取所需长度信息（字节数）
 	//************************************
-	static int UTF16Str_To_UTF8Str(const WORD* pwszUTF16Str, byte* pbszUTF8Str){
-		int		iNum, iLen;
-		DWORD	dwUCS4;
-
-		if (pwszUTF16Str == NULL){	// 参数错误
+	//何俊秋，进行优化，从这里返回byte指针，外层不需要清理，由本函数管理
+	static int UTF16Str_To_UTF8Str(const WORD* pwszUTF16Str, byte* &pbszUTF8Str) {
+		// 参数错误
+		if (pwszUTF16Str == NULL) {
 			return 0;
 		}
-
+		int		iNum, iLen;
+		DWORD	dwUCS4;
+		const int __increment__ = 1024 * 4;
+		static int __length__ = __increment__;
+		static byte *__memory__ = new byte[__length__];
+		static byte *__memory__end = __memory__ + __length__;
+		byte *putf8 = __memory__;
 		iNum = 0;
-		while (*pwszUTF16Str){	// UTF16编码转换为UCS4编码
+		__locker(mtx_utf16_utf8);
+		while (*pwszUTF16Str) {
+			// UTF16编码转换为UCS4编码
 			iLen = UTF16_To_UCS4(pwszUTF16Str, dwUCS4);
-			if (iLen == 0){	// 非法的UTF16编码
+			// 非法的UTF16编码
+			if (iLen == 0) {
 				return 0;
 			}
 
 			pwszUTF16Str += iLen;
 
 			// UCS4编码转换为UTF8编码
-			iLen = UCS4_To_UTF8(dwUCS4, pbszUTF8Str);
-			if (iLen == 0){
+			iLen = UCS4_To_UTF8(dwUCS4, putf8);
+			if (iLen == 0) {
 				return 0;
 			}
 
-			if (pbszUTF8Str != NULL){
-				pbszUTF8Str += iLen;
+			/*if (putf8 != NULL) {
+				putf8 += iLen;
+			}*/
+			if (putf8 + iLen > __memory__end) {
+				__memory__ = (byte *)realloc(__memory__, sizeof(byte)*(__length__ + __increment__));
+				assert(__memory__);
+				__length__ += __increment__;
+				__memory__end = __memory__ + __length__;
 			}
-
+			putf8 += iLen;
 			iNum += iLen;
 		}
 
-		if (pbszUTF8Str != NULL){
-			*pbszUTF8Str = 0;	// 写入字符串结束标记
-		}
-
+		/*if (putf8 != NULL) {
+			*putf8 = 0;	// 写入字符串结束标记
+		}*/
+		pbszUTF8Str = __memory__;
 		return iNum;
 	}
 };
