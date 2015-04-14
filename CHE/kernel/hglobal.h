@@ -69,7 +69,7 @@ inline const Class##Private* d_func()const { return d_ptr.get(); }\
 //C++0x 便捷sleep，用于当前线程
 #define __sleep(msec) std::this_thread::sleep_for(std::chrono::milliseconds(msec))
 //移交线程使用权
-#define __surrenderconsole__ __sleep(0)
+#define __surrenderconsole__ __sleep(1)
 //不可删除，用于指针副本，框架自行处理
 #define __not_delete
 //get 方法宏 assume type of num is int, getter(num, Num) will generate function - const int& getNum()const{return this->num;}
@@ -329,5 +329,16 @@ inline HNoDebug hDebug();
 #endif // _DEBUG
 	class HLog;
 	extern HLog *logger;
+	//全局结构体定义区
+#ifndef _func_addr_
+	template<typename Func>
+	union _func_addr {
+		DWORD addr;
+		Func func;
+	};
+#define _func_addr_
+#endif // !_func_addr
+
+	
 	CHE_NAMESPACE_END
 #endif	//HGLOBAL_H_

@@ -15,18 +15,18 @@ HPacket::~HPacket()
 	delete data;
 }
 
-HPacket& HPacket::Read(const HDataBuffer& d)
+HPacket& HPacket::read(const HDataBuffer& d)
 {
 	*data = d;
-	read();
+	read_impl();
 	return *this;
 }
 
-HDataBuffer& HPacket::Write()
+HDataBuffer& HPacket::write()
 {
 	data->clear();
 
-	write();
+	write_impl();
 
 	return *data;
 }

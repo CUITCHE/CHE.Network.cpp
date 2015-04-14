@@ -1,39 +1,32 @@
 #include "HByteConvert.h"
 #include "registerpacket.h"
+#include "HDebug.hpp"
+#include <vector>
+#include "HTimer.h"
 using namespace std;
 using namespace che;
-template<typename T>
-void write_t(T d) {
-	cout << d;
+namespace che {
+	class ABC :public HObject
+	{
+	public:
+		void exec1() {
+			fprintf_s(stderr, "echo....\n");
+		}
+	};
 }
-template<>
-void write_t<double>(double d) {
-	printf("%.2lf----\n", d);
+void exec1() {
+	while (1)
+	{
+		__sleep(2);
+		continue;
+	}
 }
 int main()
 {
-	DATATYPESET *set = new DATATYPESET;
-	*set = 9;
-	char str[4];
-
-	int *dst = (int *)str;
-	int *src = (int *)set;
-	*dst = *src;
-
-	*set = 0;
-	*src = *dst;
-
-	RegisterPacket *packet = new RegisterPacket;
-	packet->setLevels(589);
-	packet->setName("ºÎ¿¡Çï");
-	packet->setPassword("123456789124dfefe");
-	packet->set___int64(489);
-	packet->set_byte(12);
-	packet->set_double(12.25);
-	packet->set_short(25);
-	packet->set_float(25.02f);
-	auto &data = packet->Write();
-	RegisterPacket *packet2 = new RegisterPacket;
-	packet2->Read(data);
+	ABC *a = new ABC;
+	HTimer *timer = new HTimer(&ABC::exec1, a);
+	timer->start(500);
+	thread t1(exec1);
+	t1.join();
 	return 0;
 }

@@ -214,9 +214,9 @@ public:
 		DWORD	dwUCS4;
 
 		const int __increment__ = 1024 * 4;
-		static int __length__ = __increment__;
-		static WORD *__memory__ = new WORD[__length__];
-		static WORD *__memory__end = __memory__ + __length__;
+		static int _length_ = __increment__;
+		static WORD *__memory__ = new WORD[_length_];
+		static WORD *__memory__end = __memory__ + _length_;
 		WORD *putf16 = __memory__;
 		iNum = 0;
 		__locker(mtx_utf16_utf8);
@@ -240,10 +240,10 @@ public:
 				putf16 += iLen;
 			}*/
 			if (putf16 + iLen > __memory__end) {
-				__memory__ = (WORD *)realloc(__memory__, sizeof(WORD)*(__length__ + __increment__));
+				__memory__ = (WORD *)realloc(__memory__, sizeof(WORD)*(_length_ + __increment__));
 				assert(__memory__);
-				__length__ += __increment__;
-				__memory__end = __memory__ + __length__;
+				_length_ += __increment__;
+				__memory__end = __memory__ + _length_;
 			}
 			putf16 += iLen;
 			iNum += iLen;
@@ -275,9 +275,9 @@ public:
 		int		iNum, iLen;
 		DWORD	dwUCS4;
 		const int __increment__ = 1024 * 4;
-		static int __length__ = __increment__;
-		static byte *__memory__ = new byte[__length__];
-		static byte *__memory__end = __memory__ + __length__;
+		static int _length_ = __increment__;
+		static byte *__memory__ = new byte[_length_];
+		static byte *__memory__end = __memory__ + _length_;
 		byte *putf8 = __memory__;
 		iNum = 0;
 		__locker(mtx_utf16_utf8);
@@ -301,10 +301,10 @@ public:
 				putf8 += iLen;
 			}*/
 			if (putf8 + iLen > __memory__end) {
-				__memory__ = (byte *)realloc(__memory__, sizeof(byte)*(__length__ + __increment__));
+				__memory__ = (byte *)realloc(__memory__, sizeof(byte)*(_length_ + __increment__));
 				assert(__memory__);
-				__length__ += __increment__;
-				__memory__end = __memory__ + __length__;
+				_length_ += __increment__;
+				__memory__end = __memory__ + _length_;
 			}
 			putf8 += iLen;
 			iNum += iLen;

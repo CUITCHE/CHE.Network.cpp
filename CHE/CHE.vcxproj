@@ -82,11 +82,13 @@
     <ClCompile Include="kernel\HObject.cpp" />
     <ClCompile Include="kernel\HObjectdefs_conn.cpp" />
     <ClCompile Include="kernel\HObject_conn.cpp" />
+    <ClCompile Include="kernel\HPool.cpp" />
     <ClCompile Include="kernel\htime.cpp" />
     <ClCompile Include="kernel\HTimer.cpp" />
     <ClCompile Include="kernel\HTimeC.cpp" />
     <ClCompile Include="kernel\private\HObjectPrivate.cpp" />
     <ClCompile Include="kernel\private\HTimerPrivate.cpp" />
+    <ClCompile Include="kernel\Reflection.cpp" />
     <ClCompile Include="NetWork\net_web\HHttpRequest.cpp" />
     <ClCompile Include="NetWork\net_web\HHttpResponse.cpp" />
     <ClCompile Include="NetWork\net_web\HttpPart.cpp" />
@@ -129,11 +131,13 @@
     <ClInclude Include="kernel\HObject.h" />
     <ClInclude Include="kernel\HObjectdefs_conn.h" />
     <ClInclude Include="kernel\HObject_conn.h" />
+    <ClInclude Include="kernel\HPool.h" />
     <ClInclude Include="kernel\htime.h" />
     <ClInclude Include="kernel\HTimer.h" />
     <ClInclude Include="kernel\HTimeC.h" />
     <ClInclude Include="kernel\private\HObjectPrivate.h" />
     <ClInclude Include="kernel\private\HTimerPrivate.h" />
+    <ClInclude Include="kernel\Reflection.h" />
     <ClInclude Include="NetWork\net_web\HHttpRequest.h" />
     <ClInclude Include="NetWork\net_web\HHttpResponse.h" />
     <ClInclude Include="NetWork\net_web\HttpPart.h" />

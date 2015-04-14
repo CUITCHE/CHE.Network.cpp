@@ -181,6 +181,12 @@
     <ClCompile Include="NetWork\socket_buffer\HData.cpp">
       <Filter>NetWork\socket_buffer</Filter>
     </ClCompile>
+    <ClCompile Include="kernel\Reflection.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HPool.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="io\HByteArray.h">
@@ -329,6 +335,12 @@
     </ClInclude>
     <ClInclude Include="NetWork\socket_buffer\HData.h">
       <Filter>NetWork\socket_buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Reflection.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HPool.h">
+      <Filter>kernel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

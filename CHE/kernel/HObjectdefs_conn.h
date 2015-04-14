@@ -9,6 +9,8 @@
 	author:		CHE
 
 	purpose:	定义一些在HObject对象在关联信号槽的时候 需要用到的定义
+				前面眼花缭乱的模板来自Qt公布的源码。namespace che里的
+				东西全是本人所写
 	*********************************************************************/
 #ifndef NAMESPACE_BEGIN_CHEPRIVATE
 #define NAMESPACE_BEGIN_CHEPRIVATE namespace ObjectdefsPrivate{

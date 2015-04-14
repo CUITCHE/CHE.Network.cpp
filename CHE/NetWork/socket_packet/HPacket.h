@@ -33,10 +33,10 @@ public:
 	virtual ~HPacket();
 
 	//从d中实例化到Packet中。处理来自客户端来的数据
-	HPacket& Read(const HDataBuffer& d);
+	HPacket& read(const HDataBuffer& d);
 
 	//写到HDataBuffer中的dataBuff。完成对底层数据的操作
-	HDataBuffer& Write();
+	HDataBuffer& write();
 
 	inline uint32 getSize()const;
 
@@ -49,8 +49,8 @@ public:
 	getsetter(int16, type, Type)
 
 protected:
-	virtual void write(){}
-	virtual void read(){}
+	virtual void write_impl(){}
+	virtual void read_impl(){}
 
 	template<typename... Args>
 	void write_to_data(const Args &...args){

@@ -26,8 +26,8 @@ public:
 	GETSETTER(double, _double, _double);
 	GETSETTER(float, _float, _float);
 protected:
-	void write();
-	void read();
+	void write_impl();
+	void read_impl();
 };
 CHE_NAMESPACE_END
 #endif // registerpacket_H__

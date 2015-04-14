@@ -22,7 +22,7 @@ class HTimer :public HObject
 	CHE_PRIVATE_DECLARE(HTimer)
 public:
 	template<typename _Fn>
-	HTimer(_Fn fn, HObject *handle) 
+	HTimer(_Fn fn, typename ObjectdefsPrivate::FunctionPointer<_Fn>::Object *handle)
 		:HTimer(handle)
 	{
 		d_ptr->functor = new TimingTask_Function_Type(std::bind(fn, handle));
