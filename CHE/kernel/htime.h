@@ -77,13 +77,13 @@ public:
 	static time_t currentTime();
 
 	//获得日期 2014/02/12 传入的string会替换日期例子中的"/"
-	static string&& currentDate(char type = '/');
+	static string currentDate(char type = '/');
 
 	//获得时间 12:02:13，传入true返回12小时制，false返回24小时制
-	static string&& currentTime(bool _in);
+	static string& currentTime(bool _in);
 
 	//获得日期和时间，日期为固定两位，24小时制
-	static string&& currentDateTime(char type = '_');
+	static string currentDateTime(char type = '_');
 
 	//返回“2014/11/30 14:05:30 星期日”的string
 	static string fmt_currentDateTime();

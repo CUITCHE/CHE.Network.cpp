@@ -1,5 +1,5 @@
 #include "HObject.h"
-#include "HObjectPrivate.h"
+#include "../kernel/private/HObjectPrivate.h"
 #include "HPool.h"
 #include <algorithm>
 

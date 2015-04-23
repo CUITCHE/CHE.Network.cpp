@@ -61,7 +61,7 @@ long double HTime::elapsed()
 	return (tEnd->QuadPart - tStart->QuadPart) * precisionNum;
 }
 #endif // WIN32
-string&& HTime::currentTime(bool _in)
+string& HTime::currentTime(bool _in)
 {
 	time_t timeData;
 	timeData = time(0);
@@ -71,7 +71,7 @@ string&& HTime::currentTime(bool _in)
 	_in && _tm.tm_hour > 12 ? _tm.tm_hour -= 12 : 0;
 	sprintf_s(strTime, "%02d:%02d:%02d", _tm.tm_hour, _tm.tm_min, _tm.tm_sec);
 
-	return move_quick(string(strTime));
+	return (string(strTime));
 }
 
 time_t HTime::currentTime()
@@ -161,7 +161,7 @@ string HTime::fmt_currentDateTime()
 	return string(strTime);
 }
 
-string&& HTime::currentDate(char type /*= "/"*/)
+string HTime::currentDate(char type /*= '/'*/)
 {
 	time_t timeData;
 	timeData = time(0);
@@ -176,10 +176,10 @@ string&& HTime::currentDate(char type /*= "/"*/)
 	timeString[4] = type;
 	timeString[7] = type;
 
-	return move_quick(timeString);
+	return (timeString);
 }
 
-string&& HTime::currentDateTime(char type /*= '_'*/)
+string HTime::currentDateTime(char type /*= '_'*/)
 {
 	time_t timeData;
 	timeData = time(0);
@@ -198,6 +198,6 @@ string&& HTime::currentDateTime(char type /*= '_'*/)
 	timeString[13] = type;
 	timeString[16] = type;
 
-	return move_quick(timeString);
+	return (timeString);
 }
 CHE_NAMESPACE_END
